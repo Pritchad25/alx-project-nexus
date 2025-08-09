@@ -1,10 +1,12 @@
-from .serializers import UserSerializer
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
-from .models import User
+from django.contrib.auth import get_user_model
+from rest_framework import generics
+from .serializers import RegisterSerializer
 
-class UserViewSet(viewsets.ModelViewSet):
-    '''Defines a Views.'''
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-    permission_classes = [IsAuthenticated]
+
+User = get_user_model()
+
+class RegisterView(generics.CreateAPIView):
+	'''A Registration View.'''
+	queryset = User.objects.all()
+	serializer_class = RegisterSerializer
+	permission_classes = []  # Allowing public access
