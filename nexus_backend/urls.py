@@ -18,6 +18,7 @@ from users.views import UserViewSet
 from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 from django.urls import path, include
 from users.views import RegisterView
+from django.contrib import admin
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
