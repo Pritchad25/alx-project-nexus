@@ -25,8 +25,7 @@ SECRET_KEY = 'django-insecure-n0f*clx%9pj)yyw$eh&ndkcz@29ub$szr3ka!9x!6coi%92zt+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '9f1c330d0f0b.807ba896.alx-cod.online']
-
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '1c276b2d28a8.0268fa5d.alx-cod.online']
 # Application definition
 
 INSTALLED_APPS = [
@@ -36,6 +35,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +68,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'nexus_backend.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
@@ -101,6 +106,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTH_USER_MODEL = 'users.User'
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
