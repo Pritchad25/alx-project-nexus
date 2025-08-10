@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = 'django-insecure-n0f*clx%9pj)yyw$eh&ndkcz@29ub$szr3ka!9x!6coi%92zt+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', '5188308a2d07.730246e6.alx-cod.online']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '5188308a2d07.730246e6.alx-cod.online',]
 # Application definition
 
 INSTALLED_APPS = [
@@ -74,6 +75,10 @@ REST_FRAMEWORK = {
     ),
 }
 
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=30),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+}
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
