@@ -19,9 +19,11 @@ from rest_framework_simplejwt.views import TokenRefreshView, TokenObtainPairView
 from django.urls import path, include
 from users.views import RegisterView
 from django.contrib import admin
+from products.views import ProductViewSet
 
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
+router.register(r'products', ProductViewSet)
 
 urlpatterns = [
         path('api/', include(router.urls)),
