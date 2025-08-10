@@ -6,6 +6,7 @@ from rest_framework import generics, viewsets
 from .models import User
 from .serializers import RegisterSerializer, UserSerializer
 from rest_framework.permissions import IsAuthenticated
+from django.utils.decorators import method_decorator
 
 User = get_user_model()
 
@@ -26,13 +27,16 @@ def login_view(request):
     if request.method != 'POST':
         return JsonResponse({'error': 'POST required'}, status=400)
 
-    data = json.loads(request.body)
+    try:
+        data = json.loads(request.body)
+    except json.JSONDecodeError:
+        return JsonResponse({'error': 'Invalid JSON'}, status=400)
+
     username = data.get('username')
     password = data.get('password')
 
     user = authenticate(request, username=username, password=password)
     if user is not None:
-        login(request, user)
         return JsonResponse({'message': 'Login successful'})
     else:
         return JsonResponse({'error': 'Invalid credentials'}, status=401)
