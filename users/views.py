@@ -7,6 +7,7 @@ from .models import User
 from .serializers import RegisterSerializer, UserSerializer
 from rest_framework.permissions import IsAuthenticated
 from django.utils.decorators import method_decorator
+from ratelimit.decorators import ratelimit
 
 User = get_user_model()
 
@@ -23,6 +24,7 @@ class RegisterView(generics.CreateAPIView):
 	permission_classes = []  # Allowing public acces
 
 @csrf_exempt
+@ratelimit(key='ip', rate='5/m', block=True)
 def login_view(request):
     if request.method != 'POST':
         return JsonResponse({'error': 'POST required'}, status=400)
