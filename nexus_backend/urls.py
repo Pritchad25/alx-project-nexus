@@ -20,7 +20,8 @@ from django.urls import path, include
 from users.views import RegisterView
 from django.contrib import admin
 from products.views import ProductViewSet
-
+from django.conf import settings
+from django.conf.urls.static import static
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'products', ProductViewSet)
@@ -35,3 +36,4 @@ urlpatterns = [
 urlpatterns += [
         path('api/register/', RegisterView.as_view(), name='register'),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
