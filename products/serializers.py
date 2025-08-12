@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Product
-from .models import Product, Category
+from categories.models import Category
 
 class ProductSerializer(serializers.ModelSerializer):
     image = serializers.ImageField(required=False)
