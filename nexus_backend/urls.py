@@ -52,6 +52,8 @@ urlpatterns = [
         path('admin/', admin.site.urls),
         path('users/', include('users.urls')),
 ]
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
 urlpatterns += [
         path('api/register/', RegisterView.as_view(), name='register'),
 ]
