@@ -20,6 +20,7 @@ from django.urls import path, include
 from users.views import RegisterView
 from django.contrib import admin
 from products.views import ProductViewSet
+from categories.views import CategoryViewSet
 from django.conf import settings
 from django.conf.urls.static import static
 router = DefaultRouter()
