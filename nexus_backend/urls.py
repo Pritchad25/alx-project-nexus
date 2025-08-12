@@ -25,6 +25,7 @@ from django.conf.urls.static import static
 router = DefaultRouter()
 router.register(r'users', UserViewSet)
 router.register(r'products', ProductViewSet)
+router.register(r'categories', CategoryViewSet)
 
 urlpatterns = [
         path('api/', include(router.urls)),
@@ -37,3 +38,4 @@ urlpatterns += [
         path('api/register/', RegisterView.as_view(), name='register'),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
